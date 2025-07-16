@@ -15,6 +15,11 @@ const schema = new Schema(
         message: "Please provide a valid email",
       },
     },
+
+    contact: {
+      type: String,
+    },
+
     message: {
       type: String,
       required: true,

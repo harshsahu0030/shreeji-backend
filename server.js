@@ -13,11 +13,18 @@ if (process.env.NODE_ENV !== "production") {
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors(corsConfig));
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://shreejitechsolutions.in"],
+    credentials: true,
+  })
+);
 app.use(express.static("public"));
 
 app.route("/").get((req, res) => {
-  res.send("Welcome to Shreeji Tech Solutions!");
+  res
+    .status(200)
+    .json({ success: true, message: "Welcome to Shreeji Tech Solutions!" });
 });
 
 // import routes
