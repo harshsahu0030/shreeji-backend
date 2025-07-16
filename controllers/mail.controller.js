@@ -5,9 +5,9 @@ import { asyncHandler } from "../utils/asyncHandler.utils.js";
 import { sendMail } from "../utils/sendmail.utils.js";
 
 const contactMailController = asyncHandler(async (req, res, next) => {
-  const { email, name, message } = req.body;
+  const { email, name, message, contact } = req.body;
 
-  if (!email || !name || !message) {
+  if (!email || !name || !message || !contact) {
     return next(new ApiError(401, "All fields are required"));
   }
 
@@ -31,10 +31,11 @@ ${process.env.USER_EMAIL}`;
     sendMail({ email, subject, text }),
     sendMail({
       email: process.env.USER_EMAIL,
-      subject: "Contact from Portfolio",
+      subject: "Contact from Shreeji Tech Solution",
       text: `
 Name: ${name}
 Email: ${email}
+Contact : ${contact}
 Message: ${message}
       `,
     }),
