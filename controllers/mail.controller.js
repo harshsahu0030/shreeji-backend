@@ -11,15 +11,20 @@ const contactMailController = asyncHandler(async (req, res, next) => {
     return next(new ApiError(401, "All fields are required"));
   }
 
-  let subject = `Thanks for reaching out!`;
+  let subject = `Thanks for reaching out! Shreeji Tech Solutions`;
   let text = `
 Hi ${name},
-Thank you for contacting me. I have received your message and will review your inquiry promptly.
+I am Harsh,
+
+Thank you for contacting me. We have received your message and will review your inquiry promptly.
 You can expect a response within 1–2 business days.
 
 Kind regards,  
 ${process.env.USER_NAME}
-${process.env.USER_EMAIL}`;
+${process.env.USER_EMAIL}
+info@shreejitechsolutions.in
+${process.env.CONTACT_NO}
+`;
 
   const mail = await Mail.create({ name, email, message });
 

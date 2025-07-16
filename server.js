@@ -17,7 +17,7 @@ app.use(cors(corsConfig));
 app.use(express.static("public"));
 
 app.route("/").get((req, res) => {
-  res.send("Welcome to Harsh Portfolio!");
+  res.send("Welcome to Shreeji Tech Solutions!");
 });
 
 // import routes
